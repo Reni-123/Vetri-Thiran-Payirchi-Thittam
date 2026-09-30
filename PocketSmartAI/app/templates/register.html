@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="auth-page">
+
+    <div class="auth-card">
+
+        <div class="eyebrow">POCKETSMART AI</div>
+
+        <h1>Create account</h1>
+
+        <p class="auth-subtitle">
+            Create your account to start planning smarter.
+        </p>
+
+        <form id="registerForm">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required
+                    minlength="6"
+                >
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-primary register-button"
+                id="registerButton"
+            >
+                Register
+            </button>
+
+            <div id="registerMessage" class="form-message"></div>
+
+        </form>
+
+        <p class="auth-footer">
+            Already have an account?
+            <a href="/login">Sign in</a>
+        </p>
+
+    </div>
+
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("registerForm");
+    const button = document.getElementById("registerButton");
+    const message = document.getElementById("registerMessage");
+
+    form.addEventListener("submit", async function (event) {
+
+        // VERY IMPORTANT:
+        // Prevent the browser from changing /register to /register?
+        event.preventDefault();
+
+        message.textContent = "";
+        message.className = "form-message";
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+
+        if (!name || !email || !password) {
+            message.textContent = "Please fill in all fields.";
+            message.classList.add("error");
+            return;
+        }
+
+        button.disabled = true;
+        button.textContent = "Creating account...";
+
+        try {
+
+            const response = await fetch("/api/auth/register", {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.detail || "Registration failed."
+                );
+            }
+
+            message.textContent =
+                "Account created successfully! Redirecting to login...";
+
+            message.classList.add("success");
+
+            form.reset();
+
+            setTimeout(function () {
+                window.location.href = "/login";
+            }, 1200);
+
+        } catch (error) {
+
+            console.error("Registration error:", error);
+
+            message.textContent = error.message ||
+                "Unable to create account.";
+
+            message.classList.add("error");
+
+        } finally {
+
+            button.disabled = false;
+            button.textContent = "Register";
+        }
+
+    });
+
+});
+</script>
+
+{% endblock %}

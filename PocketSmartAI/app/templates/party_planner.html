@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}
+Party Planner — PocketSmart AI
+{% endblock %}
+
+{% block content %}
+
+<div class="planner">
+
+    <p class="eyebrow">
+        PARTY BUDGET PLANNER
+    </p>
+
+    <h1>
+        Organize the event without guesswork.
+    </h1>
+
+    <form id="partyForm">
+
+        <div class="form-grid">
+
+            <!-- BUDGET -->
+            <label>
+                Budget (₹)
+
+                <input
+                    type="number"
+                    id="budget"
+                    name="budget"
+                    min="1"
+                    step="1"
+                    value="50000"
+                    required
+                >
+            </label>
+
+
+            <!-- GUESTS -->
+            <label>
+                Guests
+
+                <input
+                    type="number"
+                    id="guests"
+                    name="guests"
+                    min="1"
+                    step="1"
+                    value="50"
+                    required
+                >
+            </label>
+
+
+            <!-- EVENT TYPE -->
+            <label>
+                Event type
+
+                <input
+                    type="text"
+                    id="event_type"
+                    name="event_type"
+                    value="Birthday"
+                    required
+                >
+            </label>
+
+
+            <!-- VENUE -->
+            <label>
+                Venue type
+
+                <select
+                    id="venue"
+                    name="venue"
+                >
+                    <option value="home">
+                        Home
+                    </option>
+
+                    <option value="hall">
+                        Hall
+                    </option>
+
+                    <option value="hotel">
+                        Hotel
+                    </option>
+
+                    <option value="outdoor">
+                        Outdoor
+                    </option>
+                </select>
+            </label>
+
+
+            <!-- CITY -->
+            <label>
+                City
+
+                <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    value="Chennai"
+                    required
+                >
+            </label>
+
+
+            <!-- FOOD -->
+            <label>
+                Food preference
+
+                <select
+                    id="food_preference"
+                    name="food_preference"
+                >
+                    <option value="mixed">
+                        Mixed
+                    </option>
+
+                    <option value="vegetarian">
+                        Vegetarian
+                    </option>
+
+                    <option value="non-vegetarian">
+                        Non-vegetarian
+                    </option>
+                </select>
+            </label>
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            type="submit"
+        >
+            Generate Party Plan
+        </button>
+
+    </form>
+
+
+    <div id="result"></div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script src="/static/css/js/planners.js"></script>
+
+{% endblock %}

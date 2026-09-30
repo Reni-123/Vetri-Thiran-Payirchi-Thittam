@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}
+Jewelry Planner — PocketSmart AI
+{% endblock %}
+
+{% block content %}
+
+<div class="planner">
+
+    <p class="eyebrow">
+        JEWELRY BUDGET PLANNER
+    </p>
+
+    <h1>
+        Find a coordinated look.
+    </h1>
+
+    <form
+        id="jewelryForm"
+        enctype="multipart/form-data"
+    >
+
+        <div class="form-grid">
+
+            <label>
+                Budget (₹)
+
+                <input
+                    type="number"
+                    id="budget"
+                    name="budget"
+                    min="1"
+                    value="10000"
+                    required
+                >
+            </label>
+
+            <label>
+                Occasion
+
+                <input
+                    type="text"
+                    id="occasion"
+                    name="occasion"
+                    value="Wedding"
+                    required
+                >
+            </label>
+
+            <label>
+                Style
+
+                <select
+                    id="style"
+                    name="style"
+                >
+                    <option value="elegant">
+                        elegant
+                    </option>
+
+                    <option value="minimal">
+                        minimal
+                    </option>
+
+                    <option value="traditional">
+                        traditional
+                    </option>
+
+                    <option value="statement">
+                        statement
+                    </option>
+
+                    <option value="modern">
+                        modern
+                    </option>
+                </select>
+            </label>
+
+            <label>
+                Outfit color
+
+                <input
+                    type="text"
+                    id="outfit_color"
+                    name="outfit_color"
+                    value="wine red"
+                >
+            </label>
+
+            <label class="wide">
+                Outfit description
+
+                <textarea
+                    id="outfit_description"
+                    name="outfit_description"
+                    placeholder="Silk saree with gold embroidery"
+                ></textarea>
+            </label>
+
+            <label class="wide">
+                Optional outfit image
+
+                <input
+                    type="file"
+                    id="outfit_image"
+                    name="saree"
+                    accept="image/png,image/jpeg,image/webp"
+                >
+            </label>
+
+        </div>
+
+        <button
+            class="btn primary"
+            type="submit"
+        >
+            Generate Jewelry Plan
+        </button>
+
+    </form>
+
+    <div id="result"></div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="/static/js/planners.js"></script>
+
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}
+PocketSmart AI — Smart Budget Assistant
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div>
+
+        <p class="eyebrow">
+            SMART BUDGET & RECOMMENDATION ASSISTANT
+        </p>
+
+
+        <h1>
+
+            Plan smarter.
+            <br>
+
+            <span>
+                Spend with confidence.
+            </span>
+
+        </h1>
+
+
+        <p class="lead">
+
+            Create AI-assisted plans for
+            home interiors, parties and jewelry.
+
+            Set a budget, describe what you need,
+            and get a structured plan with
+            estimated costs and platform
+            search links.
+
+        </p>
+
+
+        <div class="actions">
+
+            <a
+                class="btn primary"
+                href="/register"
+            >
+                Get Started
+            </a>
+
+
+            <a
+                class="btn ghost"
+                href="/login"
+            >
+                Sign In
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="orb">
+            ₹
+        </div>
+
+
+        <h3>
+            One budget. One clear plan.
+        </h3>
+
+
+        <p>
+
+            Gemini-powered recommendations
+            with a local fallback so the demo
+            remains usable even before an API
+            key is configured.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="grid three">
+
+    <a
+        class="feature"
+        href="/planner/home"
+    >
+
+        <b>
+            🏠 Home Interior
+        </b>
+
+        <span>
+            Furniture, lighting and decor
+            within budget.
+        </span>
+
+    </a>
+
+
+    <a
+        class="feature"
+        href="/planner/party"
+    >
+
+        <b>
+            🎉 Party Planner
+        </b>
+
+        <span>
+            Food, venue and decoration
+            allocation.
+        </span>
+
+    </a>
+
+
+    <a
+        class="feature"
+        href="/planner/jewelry"
+    >
+
+        <b>
+            💎 Jewelry Planner
+        </b>
+
+        <span>
+            Occasion and outfit-aware
+            jewelry suggestions.
+        </span>
+
+    </a>
+
+</section>
+
+{% endblock %}

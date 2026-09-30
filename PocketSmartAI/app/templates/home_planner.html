@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home Planner — PocketSmart AI
+{% endblock %}
+
+
+{% block content %}
+
+<div class="planner">
+
+    <p class="eyebrow">
+        HOME INTERIOR PLANNER
+    </p>
+
+
+    <h1>
+        Build a beautiful home plan.
+    </h1>
+
+
+    <form id="homeForm">
+
+        <div class="form-grid">
+
+            <label>
+
+                Budget (₹)
+
+                <input
+    type="number"
+    id="budget"
+    name="budget"
+    min="1"
+    step="1"
+    value="150000"
+    required
+>
+
+            </label>
+
+
+            <label>
+
+                City
+
+                <input
+                    id="city"
+                    value="Chennai"
+                >
+
+            </label>
+
+
+            <label>
+
+                Style
+
+                <select id="style">
+
+                    <option>
+                        modern
+                    </option>
+
+                    <option>
+                        minimal
+                    </option>
+
+                    <option>
+                        traditional
+                    </option>
+
+                    <option>
+                        boho
+                    </option>
+
+                    <option>
+                        luxury
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <label>
+
+                Rooms
+
+                <input
+                    id="rooms"
+                    value="Living Room, Bedroom"
+                    required
+                >
+
+            </label>
+
+        </div>
+
+
+        <h3>
+            Items
+        </h3>
+
+
+        <div id="items">
+
+            <div class="item-row">
+
+                <input
+                    class="category"
+                    value="furniture"
+                    placeholder="Category"
+                >
+
+                <input
+                    class="item"
+                    value="Sofa"
+                    placeholder="Item"
+                >
+
+                <input
+                    class="qty"
+                    type="number"
+                    value="1"
+                    min="1"
+                >
+
+                <input
+                    class="itemstyle"
+                    value="modern"
+                    placeholder="Style"
+                >
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="btn ghost"
+            id="addItem"
+        >
+            + Add item
+        </button>
+
+
+        <button
+            class="btn primary"
+            type="submit"
+        >
+            Generate Home Plan
+        </button>
+
+    </form>
+
+
+    <div id="result"></div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script src="/static/css/js/planners.js"></script>
+{% endblock %}
